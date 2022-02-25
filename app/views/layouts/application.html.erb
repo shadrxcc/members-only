@@ -6,31 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <%= render 'layouts/header' %>
+  <div class="container mt-3">
+  <%if notice %>
+    <%= render 'layouts/alert'%>
+  <%end%>
+
     <%= yield %>
-    <ul class="navbar-nav  d-flex flex-row gap-3">
-      <li class="nav-item active">
-  
-      <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to 'Edit Profile ',  edit_user_registration_path, class:"nav-link logo text-white"%> 
-      </li>
-      <li class="nav-item">
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-link logo text-white" %>
-      </li>
-      <% else %>
-      <li>
-          <%= link_to 'Sign up', new_user_registration_path, class:"nav-link logo text-white"%>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Sign in', new_user_session_path, class:"nav-link logo text-white"%>
-      </li></div>
-      <% end %>
+ <div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
