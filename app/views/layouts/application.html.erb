@@ -11,6 +11,26 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <ul class="navbar-nav  d-flex flex-row gap-3">
+      <li class="nav-item active">
+  
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Edit Profile ',  edit_user_registration_path, class:"nav-link logo text-white"%> 
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-link logo text-white" %>
+      </li>
+      <% else %>
+      <li>
+          <%= link_to 'Sign up', new_user_registration_path, class:"nav-link logo text-white"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign in', new_user_session_path, class:"nav-link logo text-white"%>
+      </li></div>
+      <% end %>
   </body>
 </html>
