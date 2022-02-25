@@ -1,4 +1,17 @@
 # frozen_string_literal: true
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream */*).include? request_format.to_s
+  end
+end
 
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
@@ -15,6 +28,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'c4fb2fbddc080a01e87327041943c9b5457fafa64ccf2b3d55692009a5e0af943e712a8c1540aa6831182c72960227b94d8e09544b9cc947a9f4d505bcbc783d'
+  config.parent_controller = 'Users::DeviseController'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -229,7 +243,11 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
   # config.sign_in_after_reset_password = true
-
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+  #   manager.intercept_401 = false
+  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
+  end
   # ==> Configuration for :encryptable
   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
   # You can use :sha1, :sha512 or algorithms from others authentication tools as
@@ -239,6 +257,7 @@ Devise.setup do |config|
   #
   # Require the `devise-encryptable` gem when using anything other than bcrypt
   # config.encryptor = :sha512
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
