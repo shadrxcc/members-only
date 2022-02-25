@@ -1,6 +1,5 @@
-## Reformer
-The reformer is a user creation app. The app creates a user after a form has been filled by the particular user.
-This Members Only app. This is a authentication systems where users can only make a post when they log in. In this app, user can create a Sign in, Sign up, Sign Out, cancel an account, change the password, and edit the created profile. Also, users can create a post when logged in, delete a post and edit a post.
+## Member only
+This Members Only app. This is an authentication system where users can only make a post when they log in. Users are authenticated by signing-up, then logging into the platform
 ##### Prerequisites
 
 The setups steps expect following tools installed on the system.
@@ -34,7 +33,7 @@ bundle && yarn
 ## 4. Initialize the database
 
 ```shell
-rails db:create db:migrate db:seed
+rails db:create db:migrate 
 ```
 ## 5. Start the server
 
@@ -43,7 +42,7 @@ Start the server by running:
 ```ruby
 rails s
 ```
-Navigate to the new route http://127.0.0.1:3000/users/new
+Navigate to the new route http://127.0.0.1:3000
 
 ## Built With
 
