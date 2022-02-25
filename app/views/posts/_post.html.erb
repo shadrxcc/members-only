@@ -1,11 +1,18 @@
 <div id="<%= dom_id post %>">
+
   <p>
     <strong>Title:</strong>
     <%= post.title %>
-  
   </p>
-<% if user_signed_in?%>
-    <div> Authored by: <%= post.user.name %></div>
+
+  <p>
+    <strong>Body:</strong>
+    <%= post.body %>
+  </p>
+
+  <p>
+  <% if user_signed_in?%>
+    <i class="font-weight-light"> Authored by: </i>
     <% end %>
   </p>
 
