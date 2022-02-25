@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # frozen_string_literal: true
 class TurboFailureApp < Devise::FailureApp
   def respond
@@ -13,6 +14,8 @@ class TurboFailureApp < Devise::FailureApp
   end
 end
 
+=======
+>>>>>>> affd077aaf057bd15ce56094f3635bcbd282d353
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
