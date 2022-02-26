@@ -1,0 +1,11 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <p class="lead"><%= render @post %> </p>
+    <hr >
+    <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary"><%= link_to "Edit Post", edit_post_path(@post), class:"text-white" %></button>
+  <button type="button" class="btn btn-secondary"><%= link_to "Back to posts", posts_path, class:"text-white" %></button>
+  <%= button_to "Destroy Post", @post, method: :delete, class:"btn btn-danger rounded-0 " %>
+</div>
+  </div>
+</div>
