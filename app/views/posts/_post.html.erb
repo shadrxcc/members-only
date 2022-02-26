@@ -12,7 +12,7 @@
 
   <p>
   <% if user_signed_in?%>
-    <i class="font-weight-light"> Authored by: </i>
+    <i class="font-weight-light"> Authored by: <%= post.user.name %>  </i>
     <% end %>
   </p>
 
